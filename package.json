@@ -1,0 +1,17 @@
+{
+  "name": "serverless-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "packageManager": "yarn@3.2.0",
+  "scripts": {
+    "start:frontend": "yarn workspace @serverless-demo/frontend start",
+    "start:backend": "yarn workspace @serverless-demo/dev-server start",
+    "build": "yarn workspace @serverless-demo build"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../src/index.ts", "../../../src/hello-world.ts"],
+  "sourcesContent": ["export * from \"./hello-world\"", "import {APIGatewayProxyEvent, APIGatewayProxyResult} from \"aws-lambda\";\nexport async function helloWorldHandler(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {\n    return {\n        statusCode: 200,\n        body: \"Hello World\"\n    }\n}"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;;;ACCA,2BAAwC,OAA6D;AAAA;AACjG,WAAO;AAAA,MACH,YAAY;AAAA,MACZ,MAAM;AAAA;AAAA;AAAA;",
+  "names": []
+}

@@ -1,0 +1,17 @@
+{
+  "name": "@serverless-demo/dev-server",
+  "packageManager": "yarn@3.2.0",
+  "dependencies": {
+    "@serverless-demo/api": "workspace:^",
+    "express": "^4.18.1"
+  },
+  "scripts": {
+    "start": "nodemon dev-server.ts",
+    "build": ""
+  },
+  "devDependencies": {
+    "aws-lambda": "^1.0.7",
+    "nodemon": "^2.0.16",
+    "ts-node": "^10.7.0"
+  }
+}

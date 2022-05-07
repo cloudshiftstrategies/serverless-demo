@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../src/lambda-1.ts"],
+  "sourcesContent": ["export async function handler(event: any) {\n    let statusCode\n    let body\n\n    try {\n        // \"body\" will come from API Gateway as plain text\n        const { word } = JSON.parse(event.body)\n\n        statusCode = 200\n        body = {\n            upperCaseWord: word.toUpperCase()\n        }\n    }\n    catch (err) {\n        statusCode = 400\n    }\n\n    // Return object required by API Gateway\n    return {\n        statusCode,\n        headers: {\n            'Access-Control-Allow-Origin': '*',\n            'Access-Control-Allow-Credentials': true\n        },\n        body: JSON.stringify(body)\n    }\n}"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA,iBAA8B,OAAY;AAAA;AACtC,QAAI;AACJ,QAAI;AAEJ,QAAI;AAEA,YAAM,EAAE,SAAS,KAAK,MAAM,MAAM;AAElC,mBAAa;AACb,aAAO;AAAA,QACH,eAAe,KAAK;AAAA;AAAA,aAGrB,KAAP;AACI,mBAAa;AAAA;AAIjB,WAAO;AAAA,MACH;AAAA,MACA,SAAS;AAAA,QACL,+BAA+B;AAAA,QAC/B,oCAAoC;AAAA;AAAA,MAExC,MAAM,KAAK,UAAU;AAAA;AAAA;AAAA;",
+  "names": []
+}
