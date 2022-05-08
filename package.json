@@ -6,8 +6,9 @@
   "packageManager": "yarn@3.2.0",
   "scripts": {
     "start:frontend": "yarn workspace @serverless-demo/frontend start",
-    "start:backend": "yarn workspace @serverless-demo/dev-server start",
-    "build": "yarn workspace @serverless-demo build"
+    "start:api": "yarn workspace @serverless-demo/dev-server start",
+    "build": "yarn workspaces foreach run build",
+    "test": "yarn workspaces foreach run test"
   },
   "workspaces": {
     "packages": [

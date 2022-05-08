@@ -179,7 +179,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/cli@npm:~13.3.5":
+"@angular/cli@npm:^13.3.5":
   version: 13.3.5
   resolution: "@angular/cli@npm:13.3.5"
   dependencies:
@@ -2094,14 +2094,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@serverless-demo/api@workspace:^, @serverless-demo/api@workspace:packages/api":
+"@serverless-demo/api@workspace:^, @serverless-demo/api@workspace:packages/backend":
   version: 0.0.0-use.local
-  resolution: "@serverless-demo/api@workspace:packages/api"
+  resolution: "@serverless-demo/api@workspace:packages/backend"
   dependencies:
     "@types/aws-lambda": ^8.10.95
     aws-lambda: ^1.0.7
+    aws-sdk: ^2.1130.0
     esbuild-plugin-copy: ^1.3.0
     node-typescript: ^0.1.3
+  languageName: unknown
+  linkType: soft
+
+"@serverless-demo/cdk@workspace:packages/cdk":
+  version: 0.0.0-use.local
+  resolution: "@serverless-demo/cdk@workspace:packages/cdk"
+  dependencies:
+    "@types/jest": ^26.0.10
+    "@types/node": 10.17.27
+    aws-cdk: 2.20.0
+    aws-cdk-lib: 2.20.0
+    constructs: ^10.0.0
+    jest: ^26.4.2
+    source-map-support: ^0.5.16
+    ts-jest: ^26.2.0
+    ts-node: ^9.0.0
+    typescript: ~3.9.7
+  bin:
+    cdk: bin/cdk.js
   languageName: unknown
   linkType: soft
 
@@ -2123,7 +2143,7 @@ __metadata:
   dependencies:
     "@angular-devkit/build-angular": ~13.3.5
     "@angular/animations": ~13.3.0
-    "@angular/cli": ~13.3.5
+    "@angular/cli": ^13.3.5
     "@angular/common": ~13.3.0
     "@angular/compiler": ~13.3.0
     "@angular/compiler-cli": ~13.3.0
@@ -3212,7 +3232,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"aws-sdk@npm:^2.814.0":
+"aws-sdk@npm:^2.1130.0, aws-sdk@npm:^2.814.0":
   version: 2.1130.0
   resolution: "aws-sdk@npm:2.1130.0"
   dependencies:
@@ -3770,25 +3790,6 @@ __metadata:
   checksum: febe73278f910b0d28aab7efd6f51c235f9aa9e296148edb56dfb83fd58faa88308c30ce9a0122b6e53e0362c44f4407105bd5ef89c46860fc2b184e540fd68d
   languageName: node
   linkType: hard
-
-"cdk@workspace:packages/cdk":
-  version: 0.0.0-use.local
-  resolution: "cdk@workspace:packages/cdk"
-  dependencies:
-    "@types/jest": ^26.0.10
-    "@types/node": 10.17.27
-    aws-cdk: 2.20.0
-    aws-cdk-lib: 2.20.0
-    constructs: ^10.0.0
-    jest: ^26.4.2
-    source-map-support: ^0.5.16
-    ts-jest: ^26.2.0
-    ts-node: ^9.0.0
-    typescript: ~3.9.7
-  bin:
-    cdk: bin/cdk.js
-  languageName: unknown
-  linkType: soft
 
 "chalk@npm:^2.0.0":
   version: 2.4.2

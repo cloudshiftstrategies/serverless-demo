@@ -1,6 +1,8 @@
+var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
 var __export = (target, all) => {
@@ -14,6 +16,9 @@ var __reExport = (target, module2, copyDefault, desc) => {
         __defProp(target, key, { get: () => module2[key], enumerable: !(desc = __getOwnPropDesc(module2, key)) || desc.enumerable });
   }
   return target;
+};
+var __toESM = (module2, isNodeMode) => {
+  return __reExport(__markAsModule(__defProp(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", !isNodeMode && module2 && module2.__esModule ? { get: () => module2.default, enumerable: true } : { value: module2, enumerable: true })), module2);
 };
 var __toCommonJS = /* @__PURE__ */ ((cache) => {
   return (module2, temp) => {
@@ -41,24 +46,27 @@ var __async = (__this, __arguments, generator) => {
   });
 };
 
-// src/index.ts
-var src_exports = {};
-__export(src_exports, {
-  helloWorldHandler: () => helloWorldHandler
+// src/table-handler.ts
+var table_handler_exports = {};
+__export(table_handler_exports, {
+  tableHandler: () => tableHandler
 });
-
-// src/hello-world.ts
-function helloWorldHandler(event) {
+var AWS = __toESM(require("aws-sdk"));
+var options = { endpoint: process.env.DYNAMODB_ENDPOINT || void 0, region: process.env.REGION || void 0 };
+console.log(JSON.stringify(options));
+var ddb = new AWS.DynamoDB(options);
+function tableHandler(event) {
   return __async(this, null, function* () {
+    const data = yield ddb.listTables().promise();
     return {
       statusCode: 200,
-      body: "Hello World"
+      body: JSON.stringify(data)
     };
   });
 }
-module.exports = __toCommonJS(src_exports);
+module.exports = __toCommonJS(table_handler_exports);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  helloWorldHandler
+  tableHandler
 });
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=table-handler.js.map

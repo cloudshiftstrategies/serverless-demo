@@ -1,0 +1,42 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  cloudfront:
+    image: nginx
+    ports: ["8080:80"]
+    volumes:
+      - ./packages/dev-server/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - backend
+      - frontend
+  frontend:
+    image: node:14
+    ports: ["4200:4200"]
+    entrypoint: yarn start:frontend
+    working_dir: /local
+    volumes:
+      - .:/local
+  backend:
+    image: node:14
+    ports: ["3000:3000"]
+    entrypoint: yarn start:api
+    working_dir: /local
+    volumes:
+      - .:/local
+    environment:
+      AWS_ACCESS_KEY_ID: 'DUMMYIDEXAMPLE'
+      AWS_SECRET_ACCESS_KEY: 'DUMMYEXAMPLEKEY'
+      REGION: 'local'
+      DYNAMODB_ENDPOINT: http://dynamodb:8000
+    depends_on:
+      - dynamodb
+  dynamodb:
+    image: "amazon/dynamodb-local:latest"
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath /home/dynamodblocal/data"
+    ports:
+      - "8000:8000"
+    volumes:
+      - dynamo_data:/home/dynamodblocal/data
+    user: root
+volumes:
+  dynamo_data:
+

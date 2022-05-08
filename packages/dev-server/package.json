@@ -6,7 +6,7 @@
     "express": "^4.18.1"
   },
   "scripts": {
-    "start": "nodemon dev-server.ts",
+    "start": "nodemon --watch ../backend/src/ dev-server.ts",
     "build": ""
   },
   "devDependencies": {

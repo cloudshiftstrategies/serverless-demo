@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../src/index.ts", "../../../src/hello-world.ts", "../../../src/table-handler.ts"],
+  "sourcesContent": ["export * from \"./hello-world\"\nexport * from \"./table-handler\"", "import {APIGatewayProxyEvent, APIGatewayProxyResult} from \"aws-lambda\";\nexport async function helloWorldHandler(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {\n    return {\n        statusCode: 200,\n        body: \"Hello World!\"\n    }\n}", "import * as AWS from \"aws-sdk\"\nimport {APIGatewayProxyEvent, APIGatewayProxyResult} from \"aws-lambda\";\n\nconst options = {endpoint: process.env.DYNAMODB_ENDPOINT || undefined, region: process.env.REGION || undefined};\nconsole.log(JSON.stringify(options))\nconst ddb = new AWS.DynamoDB(options);\n//const documentClient = new AWS.DynamoDB.DocumentClient(options);\n\nexport async function tableHandler(event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> {\n    const data = await ddb.listTables().promise()\n    return {\n        statusCode: 200,\n        body: JSON.stringify(data)\n    }\n}"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;;;ACCA,2BAAwC,OAA6D;AAAA;AACjG,WAAO;AAAA,MACH,YAAY;AAAA,MACZ,MAAM;AAAA;AAAA;AAAA;;;ACJd,UAAqB;AAGrB,IAAM,UAAU,EAAC,UAAU,QAAQ,IAAI,qBAAqB,QAAW,QAAQ,QAAQ,IAAI,UAAU;AACrG,QAAQ,IAAI,KAAK,UAAU;AAC3B,IAAM,MAAM,IAAQ,aAAS;AAG7B,sBAAmC,OAA6D;AAAA;AAC5F,UAAM,OAAO,MAAM,IAAI,aAAa;AACpC,WAAO;AAAA,MACH,YAAY;AAAA,MACZ,MAAM,KAAK,UAAU;AAAA;AAAA;AAAA;",
+  "names": []
+}

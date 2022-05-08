@@ -12,5 +12,8 @@
     "build": "node build.config.mjs",
     "build:dev": "node build.config.mjs --dev",
     "build:watch": "node build.config.mjs --dev --watch"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1130.0"
   }
 }
